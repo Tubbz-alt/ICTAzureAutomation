@@ -80,6 +80,11 @@ function Get-MemberTypeExtended {
     }
 
     # ----------------------- #
+    try {
+        .\AAD-CustomMemberTypes.ps1
+    } catch {
+        Write-Verbose '.\AAD-CustomMemberTypes.ps1 Failed to run'
+    }
     # ----------------------- #
 
     if ( ($user.IsLicensed -eq $false) -and ($user.ProxyAddr -ne '') -and ($user.UserPrincipalName -notmatch '#EXT#') ) {
